@@ -23,4 +23,9 @@ extension UIView {
                                   multiplier: 1,
                                   constant: 0)
     }
+    
+    func usingConstraints() -> UIView {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
 }

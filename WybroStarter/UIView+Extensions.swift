@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension UIView {
+public extension UIView {
     
     enum LayoutType {
         case vertical, horizontal

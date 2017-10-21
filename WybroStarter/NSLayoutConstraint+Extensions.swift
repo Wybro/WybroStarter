@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSLayoutConstraint {
+public extension NSLayoutConstraint {
     class func constraints(formats: [String],
                            options: NSLayoutFormatOptions = [],
                            metrics: [String : Any]? = nil,
@@ -30,7 +30,7 @@ extension NSLayoutConstraint {
     }
 }
 
-extension Array where Element == NSLayoutConstraint {
+public extension Array where Element == NSLayoutConstraint {
     func activate() {
         NSLayoutConstraint.activate(self)
     }

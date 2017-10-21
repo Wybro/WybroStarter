@@ -9,7 +9,7 @@
 import Foundation
 
 public extension UIColor {
-    convenience init(hex: String) {
+    public convenience init(hex: String) {
         let scanner = Scanner(string: hex)
         scanner.scanLocation = 0
         

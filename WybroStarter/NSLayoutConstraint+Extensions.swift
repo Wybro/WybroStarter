@@ -9,7 +9,7 @@
 import Foundation
 
 public extension NSLayoutConstraint {
-    class func constraints(formats: [String],
+    public class func constraints(formats: [String],
                            options: NSLayoutFormatOptions = [],
                            metrics: [String : Any]? = nil,
                            views: [String : Any]) -> [NSLayoutConstraint] {
@@ -25,13 +25,13 @@ public extension NSLayoutConstraint {
         return constraints.flatMap { $0 }
     }
     
-    func activate() {
+    public func activate() {
         self.isActive = true
     }
 }
 
 public extension Array where Element == NSLayoutConstraint {
-    func activate() {
+    public func activate() {
         NSLayoutConstraint.activate(self)
     }
 }

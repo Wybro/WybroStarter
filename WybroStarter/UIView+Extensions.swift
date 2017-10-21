@@ -10,11 +10,11 @@ import Foundation
 
 public extension UIView {
     
-    enum LayoutType {
+    public enum LayoutType {
         case vertical, horizontal
     }
     
-    func center(in superview: UIView, type: LayoutType) -> NSLayoutConstraint {
+    public func center(in superview: UIView, type: LayoutType) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self,
                                   attribute: (type == .horizontal) ? .centerX : .centerY,
                                   relatedBy: .equal,
@@ -24,7 +24,7 @@ public extension UIView {
                                   constant: 0)
     }
     
-    func usingConstraints() -> UIView {
+    public func usingConstraints() -> UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         return self
     }

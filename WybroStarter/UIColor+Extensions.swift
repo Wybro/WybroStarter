@@ -1,6 +1,6 @@
 //
 //  UIColor+Extensions.swift
-//  Wybro
+//  WybroStarter
 //
 //  Created by Connor Wybranowski on 10/21/17.
 //  Copyright © 2017 wybro. All rights reserved.

@@ -10,7 +10,7 @@ pod 'WybroStarter'
 
 Swift Extensions
 ------
-We have added added new functionality to `UIView`, `NSLayoutConstraint` and `UIColor` to make it easier to build projects *without* `xib` files
+We have added new functionality to `UIView`, `NSLayoutConstraint` and `UIColor` to make it easier to build projects *without* `xib` files
 
 ### UIView
 

@@ -38,13 +38,19 @@ let constraints = NSLayoutConstraint.constraints(
 )
 ```
 
-A nice pattern to follow involves creating a function to return the constraints you want and chaining an `activate` to enable the constraints:
+A nice pattern to follow involves creating a function to return the constraints you want and chaining an `activate` to enable all of the constraints:
 ```Swift
 func layoutConstraints() -> [NSLayoutConstraint] {
   // create constraints here
   return constraints
 }
 
-layoutConstraints.activate()
+layoutConstraints().activate()
+```
+
+### UIColor
+Create an instance of `UIColor` using a `hex` string:
+```Swift
+let color = UIColor(hex: "FFFFFF")
 ```
 

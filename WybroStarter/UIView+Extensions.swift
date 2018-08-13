@@ -47,25 +47,25 @@ public extension UIView {
         case vertical, horizontal
     }
     
-    public func fill(_ direction: FillType, in superview: UIView) -> [NSLayoutConstraint] {
+    public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let first = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .top : .leading,
                                        relatedBy: .equal,
                                        toItem: superview,
                                        attribute: direction == .vertical ? .top : .leading,
                                        multiplier: 1,
-                                       constant: 0)
+                                       constant: padding)
         let second = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .bottom : .trailing,
                                        relatedBy: .equal,
                                        toItem: superview,
                                        attribute: direction == .vertical ? .bottom : .trailing,
                                        multiplier: 1,
-                                       constant: 0)
+                                       constant: -padding)
         return [first, second]
     }
     
-    public func fill(in superview: UIView) -> [NSLayoutConstraint] {
+    public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let vertical = self.fill(.vertical, in: superview)
         let horizontal = self.fill(.horizontal, in: superview)
         return [vertical, horizontal].flatMap { $0 }

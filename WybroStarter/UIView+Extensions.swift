@@ -66,8 +66,8 @@ public extension UIView {
     }
     
     public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
-        let vertical = self.fill(.vertical, in: superview)
-        let horizontal = self.fill(.horizontal, in: superview)
+        let vertical = self.fill(.vertical, in: superview, padding: padding)
+        let horizontal = self.fill(.horizontal, in: superview, padding: padding)
         return [vertical, horizontal].flatMap { $0 }
     }
 }

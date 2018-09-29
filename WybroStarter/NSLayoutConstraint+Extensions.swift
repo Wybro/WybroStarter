@@ -10,7 +10,7 @@ import Foundation
 
 public extension NSLayoutConstraint {
     public class func constraints(formats: [String],
-                           options: NSLayoutFormatOptions = [],
+                           options: NSLayoutConstraint.FormatOptions = [],
                            metrics: [String : Any]? = nil,
                            views: [String : Any]) -> [NSLayoutConstraint] {
         

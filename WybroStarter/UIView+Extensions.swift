@@ -23,14 +23,14 @@ public extension UIView {
     }
     
     /**
-     Adds a provided view to the receiver's subviews using constraints
+     Adds a provided view to the receiver's subviews using constraints.
      */
     public func addSubviewForLayout(_ view: UIView) {
         self.addSubview(view.usingConstraints())
     }
     
     /**
-     Adds the provided views to the receiver's subviews using constraints
+     Adds the provided views to the receiver's subviews using constraints.
      */
     public func addSubviewsForLayout(_ views: [UIView]) {
         views.forEach { addSubviewForLayout($0) }

@@ -99,23 +99,31 @@ public extension UIView {
 
 public extension Array where Element == UIView {
     
-    public func fill(_ direction: LayoutType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
-        return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
-    }
-    
-    public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
-        return self.map { $0.fill(in: superview, padding: padding) }.flatMap { $0 }
-    }
-    
+    /**
+     Centers all views in the provided superview vertically or horizontally,
+     with optional offset.
+     */
     public func center(in superview: UIView,
                        type: LayoutType,
                        offset: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.center(in: superview, type: type, offset: offset) }
     }
     
+    /**
+     Centers all views in the provided superview vertically and horizontally,
+     with optional offset.
+     */
     public func center(in superview: UIView,
                        xOffset: CGFloat = 0,
                        yOffset: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.center(in: superview, xOffset: xOffset, yOffset: yOffset) }.flatMap { $0 }
+    }
+    
+    public func fill(_ direction: LayoutType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
+    }
+    
+    public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.fill(in: superview, padding: padding) }.flatMap { $0 }
     }
 }

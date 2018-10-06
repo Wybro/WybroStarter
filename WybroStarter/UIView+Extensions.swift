@@ -12,11 +12,15 @@ public enum LayoutType {
     case vertical, horizontal
 }
 
-public enum FillType {
-    case vertical, horizontal
-}
-
 public extension UIView {
+    
+    /**
+     Prepares the receiver to use Auto Layout (sets `translatesAutoresizingMaskIntoConstraints` to **false**).
+    */
+    public func usingConstraints() -> UIView {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
     
     public func addSubviewForLayout(_ view: UIView) {
         self.addSubview(view.usingConstraints())
@@ -54,16 +58,11 @@ public extension UIView {
         return [vertical, horizontal]
     }
 
-    public func usingConstraints() -> UIView {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        return self
-    }
-
     /**
      Fills the view in the provided superview vertically or horizontally,
      with optional padding on each side.
      */
-    public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+    public func fill(_ direction: LayoutType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let first = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .top : .leading,
                                        relatedBy: .equal,
@@ -94,7 +93,7 @@ public extension UIView {
 
 public extension Array where Element == UIView {
     
-    public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+    public func fill(_ direction: LayoutType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
     }
 

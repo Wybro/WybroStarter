@@ -21,7 +21,15 @@ public extension UIView {
     public func addSubviewForLayout(_ view: UIView) {
         self.addSubview(view.usingConstraints())
     }
-
+    
+    public func addSubviewsForLayout(_ views: [UIView]) {
+        views.forEach { addSubviewForLayout($0) }
+    }
+    
+    /**
+     Centers the view in the provided superview vertically or horizontally,
+     with optional offset.
+    */
     public func center(in superview: UIView,
                        type: LayoutType,
                        offset: CGFloat = 0) -> NSLayoutConstraint {
@@ -73,10 +81,6 @@ public extension UIView {
         let vertical = self.fill(.vertical, in: superview, padding: padding)
         let horizontal = self.fill(.horizontal, in: superview, padding: padding)
         return [vertical, horizontal].flatMap { $0 }
-    }
-    
-    public func addSubviewsForLayout(_ views: [UIView]) {
-        views.forEach { addSubviewForLayout($0) }
     }
 }
 

@@ -74,9 +74,14 @@ public extension UIView {
         let horizontal = self.fill(.horizontal, in: superview, padding: padding)
         return [vertical, horizontal].flatMap { $0 }
     }
+    
+    public func addSubviewsForLayout(_ views: [UIView]) {
+        views.forEach { addSubviewForLayout($0) }
+    }
 }
 
 public extension Array where Element == UIView {
+    
     public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
     }

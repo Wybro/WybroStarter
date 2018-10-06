@@ -59,6 +59,10 @@ public extension UIView {
         return self
     }
 
+    /**
+     Fills the view in the provided superview vertically or horizontally,
+     with optional padding on each side.
+     */
     public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let first = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .top : .leading,
@@ -77,6 +81,10 @@ public extension UIView {
         return [first, second]
     }
 
+    /**
+     Fills the view in the provided superview vertically and horizontally,
+     with optional padding on each side.
+     */
     public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let vertical = self.fill(.vertical, in: superview, padding: padding)
         let horizontal = self.fill(.horizontal, in: superview, padding: padding)

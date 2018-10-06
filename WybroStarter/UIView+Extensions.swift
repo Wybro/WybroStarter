@@ -17,6 +17,10 @@ public enum FillType {
 }
 
 public extension UIView {
+    
+    public func addSubviewForLayout(_ view: UIView) {
+        self.addSubview(view.usingConstraints())
+    }
 
     public func center(in superview: UIView,
                        type: LayoutType,

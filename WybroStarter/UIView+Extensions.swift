@@ -8,11 +8,15 @@
 
 import Foundation
 
+public enum LayoutType {
+    case vertical, horizontal
+}
+
+public enum FillType {
+    case vertical, horizontal
+}
+
 public extension UIView {
-    
-    public enum LayoutType {
-        case vertical, horizontal
-    }
     
     public func center(in superview: UIView,
                        type: LayoutType,
@@ -43,10 +47,6 @@ public extension UIView {
         return self
     }
     
-    public enum FillType {
-        case vertical, horizontal
-    }
-    
     public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let first = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .top : .leading,
@@ -69,5 +69,15 @@ public extension UIView {
         let vertical = self.fill(.vertical, in: superview, padding: padding)
         let horizontal = self.fill(.horizontal, in: superview, padding: padding)
         return [vertical, horizontal].flatMap { $0 }
+    }
+}
+
+public extension Array where Element == UIView {
+    public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
+    }
+    
+    public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.fill(in: superview, padding: padding) }.flatMap { $0 }
     }
 }

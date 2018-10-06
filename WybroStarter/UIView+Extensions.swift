@@ -119,10 +119,18 @@ public extension Array where Element == UIView {
         return self.map { $0.center(in: superview, xOffset: xOffset, yOffset: yOffset) }.flatMap { $0 }
     }
     
+    /**
+     Fills all views in the provided superview vertically or horizontally,
+     with optional padding on each side.
+     */
     public func fill(_ direction: LayoutType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
     }
     
+    /**
+     Fills all views in the provided superview vertically and horizontally,
+     with optional padding on each side.
+     */
     public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(in: superview, padding: padding) }.flatMap { $0 }
     }

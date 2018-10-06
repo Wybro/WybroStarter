@@ -17,7 +17,7 @@ public enum FillType {
 }
 
 public extension UIView {
-    
+
     public func center(in superview: UIView,
                        type: LayoutType,
                        offset: CGFloat = 0) -> NSLayoutConstraint {
@@ -29,7 +29,7 @@ public extension UIView {
                                   multiplier: 1,
                                   constant: offset)
     }
-    
+
     /**
      Centers the view in the provided superview vertically and horizontally,
      with optional offset.
@@ -41,12 +41,12 @@ public extension UIView {
         let horizontal = center(in: superview, type: .horizontal, offset: xOffset)
         return [vertical, horizontal]
     }
-    
+
     public func usingConstraints() -> UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         return self
     }
-    
+
     public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let first = NSLayoutConstraint(item: self,
                                        attribute: direction == .vertical ? .top : .leading,
@@ -64,7 +64,7 @@ public extension UIView {
                                        constant: -padding)
         return [first, second]
     }
-    
+
     public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         let vertical = self.fill(.vertical, in: superview, padding: padding)
         let horizontal = self.fill(.horizontal, in: superview, padding: padding)
@@ -76,8 +76,20 @@ public extension Array where Element == UIView {
     public func fill(_ direction: FillType, in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(direction, in: superview, padding: padding) }.flatMap { $0 }
     }
-    
+
     public func fill(in superview: UIView, padding: CGFloat = 0) -> [NSLayoutConstraint] {
         return self.map { $0.fill(in: superview, padding: padding) }.flatMap { $0 }
+    }
+        
+    public func center(in superview: UIView,
+                       type: LayoutType,
+                       offset: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.center(in: superview, type: type, offset: offset) }
+    }
+
+    public func center(in superview: UIView,
+                       xOffset: CGFloat = 0,
+                       yOffset: CGFloat = 0) -> [NSLayoutConstraint] {
+        return self.map { $0.center(in: superview, xOffset: xOffset, yOffset: yOffset) }.flatMap { $0 }
     }
 }

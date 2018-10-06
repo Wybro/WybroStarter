@@ -99,7 +99,7 @@
 		2D2FCF141F9BECA5008C1395 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = wybro;
 				TargetAttributes = {
 					2D2FCF1C1F9BECA5008C1395 = {
